@@ -6,6 +6,8 @@ services:
     volumes: ["./app/src:/appcode"]
     ports:
       - 8501:8501
+      # service is like one container, it's creating an image for the container
+      # edit the container here and it'll make that change
 
   api:
     build: ./api

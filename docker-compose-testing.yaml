@@ -1,4 +1,6 @@
-name: project-app-testing
+name: project-app-testing # this is new
+# change names of the containers and services, but keep hostname the same
+# the ports are also slightly changed
 services:
   app-test:
     build: ./app
