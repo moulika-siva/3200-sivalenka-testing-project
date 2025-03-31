@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, make_response, current_app, redirect, url_for
 import json
-from backend.db_connection import db
-from backend.simple.playlist import sample_playlist_data
+from backend.db_connection import db # the database
+from backend.simple.playlist import sample_playlist_data # sample data
 
 # This blueprint handles some basic routes that you can use for testing
 simple_routes = Blueprint('simple_routes', __name__)
@@ -16,7 +16,7 @@ def welcome():
     current_app.logger.info('GET / handler')
     welcome_message = '<h1>Welcome to the CS 3200 Project Template REST API</h1>'
     response = make_response(welcome_message)
-    response.status_code = 200
+    response.status_code = 200 # everything is good on server side
     return response
 
 # ------------------------------------------------------------
@@ -30,7 +30,7 @@ def get_playlist_data():
     return response
 
 # ------------------------------------------------------------
-@simple_routes.route('/niceMesage', methods = ['GET'])
+@simple_routes.route('/niceMesage', methods = ['GET']) # default method is get, so you don't need the 2nd part
 def affirmation():
     message = '''
     <H1>Think about it...</H1>
@@ -41,6 +41,13 @@ def affirmation():
     response.status_code = 200
     return response
 
+@simple_routes.route("/hello")
+def hello():
+    message = "<H1>Hello CS 3200</H1>"
+    response = make_response(message)
+    response.status_code = 200
+    return response
+    
 # ------------------------------------------------------------
 # Demonstrates how to redirect from one route to another. 
 @simple_routes.route('/message')
